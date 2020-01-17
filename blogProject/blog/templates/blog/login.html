@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+</head>
+<body>
+   
+    <div class="wrap">
+        
+        <form class="login-form" action="login" method="POST">
+            {% csrf_token %}
+            <div class="form-header">
+                <h3>Login Form</h3>
+                <p>Login to access your dashboard</p>
+            </div>
+            <!--Email Input-->
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="username" name="username" required>
+            </div>
+            <!--Password Input-->
+            <div class="form-group">
+                <input type="password" class="form-input" placeholder="password" name="password" required>
+            </div>
+            <!--Login Button-->
+            <div class="form-group">
+                <button class="form-button" type="submit">Login</button>
+            </div>
+            <div class="form-footer">
+            Don't have an account? <a href="register">Sign Up</a>
+            {% for message in messages %}
+            <p class="invalidtext">{{ message }}</p>
+            {% endfor %}
+            </div>
+        </form>
+    </div><!--/.wrap-->
+</body>
+
+
+
+
